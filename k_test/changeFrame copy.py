@@ -3,7 +3,7 @@ import tkinter.ttk
 import os
 from tkinter.filedialog import askdirectory
 import func_module as fm
-######################################asjdhaskljf################################
+
 #메인 스크린 프레임의 크기생성
 def main_screen(view,h,w):
     canvas = tk.Canvas(view, height = h, width = w)
