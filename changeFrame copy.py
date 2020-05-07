@@ -32,7 +32,10 @@ class StartPage(tk.Frame):
         self.func = fm.Func_Class()       
         self.main_frame()#main frame생성
         self.btn_frame(master)#btn 생성
-        self.cam_frame()#cam 프레임 생성
+        try:
+            self.cam_frame()#cam 프레임 생성
+        except:
+            print('camera')
         self.song_frame()#song 프레임 생성          
         print('compelete')
 ###################멤버 메소드 생성##########################
