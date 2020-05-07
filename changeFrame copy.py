@@ -14,6 +14,7 @@ class SampleApp(tk.Tk):
         tk.Tk.__init__(self)
         self._frame = None  #초기 실행시 self._frame 에 None할당
         fm.Func_Class.cam_init()#camera init 초기화 프로그램 시작시 한번만
+    
         fm.Func_Class.song_init()
         self.switch_frame(StartPage)#switch_fram()멤버 메소드 호출(인자는 StartPage 클래스)
         
@@ -35,18 +36,17 @@ class StartPage(tk.Frame):
         try:
             self.cam_frame()#cam 프레임 생성
         except:
-            print('camera')
+            print('카메라 연결 이상')
         self.song_frame()#song 프레임 생성          
-        print('compelete')
-###################멤버 메소드 생성##########################
+        print('Main Page Load Compelete')
+###################멤버 메소드 생성##########################딜리버리히어로, 엔디소프트
     def main_frame(self):
         main_screen(self,480,800)
         self.img = tk.PhotoImage(file = 'image/main.png')
         tk.Label(self, image = self.img).place(x=0,y=0, relwidth=1, relheight=1)
         tk.Label(self, text = '100%').place(relx=0.955, rely=0.02, height = 13)
 
-    def btn_frame(self,master):
-        print('test')        
+    def btn_frame(self,master):    
         self.img_cam = tk.PhotoImage(file = 'image/cam1.png')
         self.img_song = tk.PhotoImage(file = 'image/song.png')
         self.img_gear = tk.PhotoImage(file = 'image/gear2.png')
@@ -129,6 +129,7 @@ class PageOne(tk.Frame):#관리자 페이지
         def view_volume(self):#로봇의 속도 
             r_volume = str(v_scale.get())          
             l_v.config(text = "시스템 볼륨 : " + r_volume)
+            fm.Func_Class.volume_speak(v_scale.get())
 
         tk.Button(self, text="메인페이지",
                   command=lambda: master.switch_frame(StartPage)).place(relx=0.85, rely=0, height = 50, width = 135)
