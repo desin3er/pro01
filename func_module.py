@@ -64,9 +64,9 @@ class Func_Class:
 
             for i,pt in enumerate(list_points[index]):#각 지정한 포인트에 맞게 랜드마크 점을 찾는다(밑에서 찾을 것을 지정해줌)
                 pt_pos = (pt[0], pt[1])
-                cv2.circle(img_frame, pt_pos, 2, (0, 255, 0), -1)
-                cv2.rectangle(img_frame, (face.left(), face.top()), (face.right(), face.bottom()),
-                    (0, 0, 255), 3)
+                cv2.circle(img_frame, pt_pos, 1, (0, 255, 0), -1)
+            cv2.rectangle(img_frame, (face.left(), face.top()), (face.right(), face.bottom()),
+                (0, 0, 255), 2)
         cv2image = cv2.cvtColor(img_frame, cv2.COLOR_BGR2RGBA)#color 배열 변경
         img = PIL.Image.fromarray(cv2image)#
         imgtk = ImageTk.PhotoImage(image=img)
@@ -86,4 +86,6 @@ class Func_Class:
         mixer.music.play()#mp3 play
     def song_stop(self):
         mixer.music.stop()
+    def volume_speak(vl):
+        mixer.music.set_volume(vl)
     
